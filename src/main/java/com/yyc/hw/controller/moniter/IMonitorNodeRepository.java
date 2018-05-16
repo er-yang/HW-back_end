@@ -8,6 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 public interface IMonitorNodeRepository extends JpaRepository<MonitorNode, Integer>{
-    @Query(value = "select a.*, b.center_name from monitor_node a left join monitor_center b on a.monitor_centerid = b.centerid", nativeQuery = true)
+    @Query(value = "select a.*, b.centerName, c.typeName from monitornode a left join monitorcenter b on a.monitorCenterID = b.centerID LEFT JOIN monitortype c  on a.typeID = c.typeID ", nativeQuery = true)
     public List<Map> getNodeList();
 }

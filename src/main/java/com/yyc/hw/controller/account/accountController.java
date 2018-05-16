@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import sun.reflect.annotation.ExceptionProxy;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,8 +18,13 @@ public class accountController {
     private IAccountRepository accountRepo;
 
     @GetMapping(value = "/user")
-    public List<Account> accountList() {
-        return accountRepo.findAll();
+    public Map accountList() {
+        long total = accountRepo.count();
+        List res = accountRepo.getAccountList();
+        Map map = new HashMap();
+        map.put("total", total);
+        map.put("data",res);
+        return map;
     }
 
     @GetMapping(value = "/user/{id}")
@@ -27,14 +33,7 @@ public class accountController {
     }
     @PostMapping(value = "/user/save")
     public Account saveAccount(@RequestBody Account new_acc) {
-        Account user = new Account();
-        user.setAccountcode(new_acc.getAccountcode());
-        user.setAccountName(new_acc.getAccountName());
-        user.setPassWord(new_acc.getPassWord());
-        user.setState(new_acc.getState());
-        user.setPhone(new_acc.getPhone());
-        user.setRemark(new_acc.getRemark());
-        return accountRepo.save(user);
+        return accountRepo.save(new_acc);
     }
     @GetMapping(value = "user/delete/{id}")
     public boolean deleteAccount (@PathVariable("id") Integer id) {

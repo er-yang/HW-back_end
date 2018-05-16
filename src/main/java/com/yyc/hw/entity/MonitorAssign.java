@@ -10,7 +10,7 @@ public class MonitorAssign{
     @Id
     @GeneratedValue
     private Integer monitorAssignID;
-    private Integer superCenterID;
+    private Integer supCenterID;
     private Integer subCenterID;
     private String remark;
 
@@ -23,12 +23,12 @@ public class MonitorAssign{
         this.monitorAssignID = monitorAssignID;
     }
 
-    public Integer getSuperCenterID() {
-        return superCenterID;
+    public Integer getSupCenterID() {
+        return supCenterID;
     }
 
-    public void setSuperCenterID(Integer superCenterID) {
-        this.superCenterID = superCenterID;
+    public void setSupCenterID(Integer supCenterID) {
+        this.supCenterID = supCenterID;
     }
 
     public Integer getSubCenterID() {

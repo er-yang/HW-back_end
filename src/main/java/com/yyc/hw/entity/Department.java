@@ -10,7 +10,7 @@ public class Department{
     @GeneratedValue
     private Integer departmentID;
     private String departmentName;
-    private Integer institutionID;
+    private Integer centerID;
     private String remark;
 
     public Department(){}
@@ -31,13 +31,15 @@ public class Department{
         this.departmentName = departmentName;
     }
 
-    public Integer getInstitutionID() {
-        return institutionID;
+
+    public Integer getCenterID() {
+        return centerID;
     }
 
-    public void setInstitutionID(Integer institutionID) {
-        this.institutionID = institutionID;
+    public void setCenterID(Integer centerID) {
+        this.centerID = centerID;
     }
+
 
     public String getRemark() {
         return remark;

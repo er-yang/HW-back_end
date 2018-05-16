@@ -4,7 +4,9 @@ import com.yyc.hw.entity.Camera;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -12,14 +14,19 @@ public class CameraController {
     @Autowired
     private ICameraRepository carmeraRepository;
     @GetMapping(value = "/camera")
-    public List<Camera> getCameraList () {
-        return carmeraRepository.findAll();
+    public Map getCameraList () {
+        long total = carmeraRepository.count();
+        Map map = new HashMap<String,Object>();
+        List<Camera> res = carmeraRepository.findAll();
+        map.put("total", total);
+        map.put("data", res);
+        return map;
     }
     @PostMapping(value = "/camera/save")
     public Camera saveCamera (@RequestBody Camera camera) {
         return carmeraRepository.save(camera);
     }
-    @GetMapping(value = "/camera/delete/id")
+    @GetMapping(value = "/camera/delete/{id}")
     public boolean  deleteCamera(@PathVariable("id") Integer id){
         try {
             carmeraRepository.deleteById(id);

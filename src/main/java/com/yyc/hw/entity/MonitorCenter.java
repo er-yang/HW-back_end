@@ -11,7 +11,6 @@ public class MonitorCenter{
     @GeneratedValue
     private Integer centerID;
     private String centerName;
-    private Integer departmentID;
     private String manager;
     private String remark;
 
@@ -33,13 +32,6 @@ public class MonitorCenter{
         this.centerName = centerName;
     }
 
-    public Integer getDepartmentID() {
-        return departmentID;
-    }
-
-    public void setDepartmentID(Integer departmentID) {
-        this.departmentID = departmentID;
-    }
 
     public String getManager() {
         return manager;

@@ -2,6 +2,7 @@ package com.yyc.hw.controller.account;
 
 
 import com.yyc.hw.entity.Account;
+import com.yyc.hw.util.MD5;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import sun.reflect.annotation.ExceptionProxy;
@@ -33,6 +34,8 @@ public class accountController {
     }
     @PostMapping(value = "/user/save")
     public Account saveAccount(@RequestBody Account new_acc) {
+        String passWord = new_acc.getPassWord();
+        new_acc.setPassWord(MD5.MD5(passWord));
         return accountRepo.save(new_acc);
     }
     @GetMapping(value = "user/delete/{id}")

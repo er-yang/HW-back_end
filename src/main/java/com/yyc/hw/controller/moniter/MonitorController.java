@@ -79,4 +79,9 @@ public class MonitorController {
         }
 
     }
+
+    @GetMapping(value = "/monitorNode/get/{id}")
+    public MonitorNode getNode(@PathVariable("id") Integer id){
+       return monitorNodeRepository.findMonitorNodeByNodeID(id);
+    }
 }

@@ -10,4 +10,6 @@ import java.util.Map;
 public interface IAccountRepository extends JpaRepository<Account, Integer>{
     @Query(value = "SELECT a.* , d.departmentName from account a LEFT JOIN department d on a.departmentID = d.departmentID",nativeQuery = true)
     public List<Map> getAccountList();
+
+    public Account findAccountByAccountCodeEquals(String accountCode);
 }

@@ -12,6 +12,8 @@ public class MonitorNode {
     private String nodeName;
     private Integer monitorCenterID;
     private Integer typeID;
+    private String longitude;
+    private String latitude;
     private String remark;
 
     public MonitorNode() {}
@@ -37,6 +39,22 @@ public class MonitorNode {
 
     public void setMonitorCenterID(Integer monitorCenterID) {
         this.monitorCenterID = monitorCenterID;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
     }
 
     public Integer getTypeID() {

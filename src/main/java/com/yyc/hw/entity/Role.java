@@ -8,19 +8,19 @@ import javax.persistence.Id;
 public class Role {
     @Id
     @GeneratedValue
-    private Integer roelID;
+    private Integer roleID;
     private String roleCode;
     private String roleName;
     private String state;
     private String remark;
 
     public Role() {}
-    public Integer getRoelID() {
-        return roelID;
+    public Integer getRoleID() {
+        return roleID;
     }
 
-    public void setRoelID(Integer roelID) {
-        this.roelID = roelID;
+    public void setRoleID(Integer roleID) {
+        this.roleID = roleID;
     }
 
     public String getRoleCode() {

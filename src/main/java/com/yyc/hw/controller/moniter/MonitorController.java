@@ -6,6 +6,9 @@ import com.yyc.hw.entity.MonitorNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -83,5 +86,12 @@ public class MonitorController {
     @GetMapping(value = "/monitorNode/get/{id}")
     public MonitorNode getNode(@PathVariable("id") Integer id){
        return monitorNodeRepository.findMonitorNodeByNodeID(id);
+    }
+
+    @GetMapping(value = "/monitorNode/getBycenter")
+    public List<Map> getNodeBycenter(String id,
+                                             HttpServletRequest requset, HttpServletResponse response) {
+        String userId = requset.getAttribute("user").toString();
+        return monitorNodeRepository.getNodeLByUser(userId);
     }
 }

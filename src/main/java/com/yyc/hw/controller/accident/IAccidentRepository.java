@@ -21,4 +21,7 @@ public interface IAccidentRepository  extends JpaRepository<Accident, Integer> {
     public List<Map> CountAccidentByMonitor();
     @Query(value = "SELECT accidentType as name ,COUNT(accidentID ) as times from accident a GROUP BY accidentType",nativeQuery = true)
     public List<Map> CountAccidentByType();
+
+    @Query( value = "SELECT m.nodeName,a.*  FROM accident a LEFT JOIN monitornode m on a.monitorNodeID =m.nodeID WHERE a.state=0", nativeQuery = true)
+    public  List<Map> getAccidentsByState();
 }

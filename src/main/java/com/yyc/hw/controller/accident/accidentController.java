@@ -48,4 +48,8 @@ public class accidentController {
     public List<Map> countAccidentByType() {
         return accidentRepository.CountAccidentByType();
     }
+    @GetMapping(value = "accident/deal")
+    public List<Map> getAccidentDeal() {
+        return accidentRepository.getAccidentsByState();
+    }
 }
